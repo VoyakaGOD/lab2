@@ -4,6 +4,7 @@
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 int experiment(double *radioactivity, double *time, double start_time, double end_time, double step);
 
