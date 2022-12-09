@@ -1,7 +1,5 @@
 void add_noise (double *radioactivity, int N)
 {
-    double random_value;
-
     srand (time (NULL));
     double random_value = (double)rand()/RAND_MAX*2.0-1.0;
 
