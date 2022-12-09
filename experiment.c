@@ -8,7 +8,7 @@ int experiment (double *radioactivity, double *time, double start_time, double e
     int N = 1;
     double beta = 0;
     printf ("\nEnter beta-constant: ");
-    scanf ("%lf", beta);
+    scanf ("%lf", &beta);
     time[0] = start_time;
     radioactivity[0] = pow (exp(1), -time[0] / beta);
 
