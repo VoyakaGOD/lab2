@@ -1,0 +1,81 @@
+D:\c projects\pain\lab2>gcc lab.c experiment.c add_noise.c nonlinear_equation.c model.c linear_equation.c precision_analysis.c dev_exp.c dev_linear.c -o lab.exe   || pause
+lab.c: In function 'main':
+lab.c:15:39: error: too few arguments to function 'calloc'
+     double *radioactivity = (double *)calloc((int)(2 * (end_time - start_time) / step));
+                                       ^~~~~~
+In file included from mega_include.h:6:0,
+                 from lab.c:1:
+d:\mingw\include\stdlib.h:484:40: note: declared here
+ _CRTIMP __cdecl __MINGW_NOTHROW  void *calloc (size_t, size_t) __MINGW_ATTRIB_MALLOC;
+                                        ^~~~~~
+lab.c:16:30: error: too few arguments to function 'calloc'
+     double *time = (double *)calloc((int)(2 * (end_time - start_time) / step));
+                              ^~~~~~
+In file included from mega_include.h:6:0,
+                 from lab.c:1:
+d:\mingw\include\stdlib.h:484:40: note: declared here
+ _CRTIMP __cdecl __MINGW_NOTHROW  void *calloc (size_t, size_t) __MINGW_ATTRIB_MALLOC;
+                                        ^~~~~~
+experiment.c: In function 'experiment':
+experiment.c:10:5: warning: implicit declaration of function 'printf' [-Wimplicit-function-declaration]
+     printf ("\nEnter beta-constant: ");
+     ^~~~~~
+experiment.c:10:5: warning: incompatible implicit declaration of built-in function 'printf'
+experiment.c:10:5: note: include '<stdio.h>' or provide a declaration of 'printf'
+experiment.c:11:5: warning: implicit declaration of function 'scanf' [-Wimplicit-function-declaration]
+     scanf ("%lf", beta);
+     ^~~~~
+experiment.c:11:5: warning: incompatible implicit declaration of built-in function 'scanf'
+experiment.c:11:5: note: include '<stdio.h>' or provide a declaration of 'scanf'
+experiment.c:13:24: warning: implicit declaration of function 'pow' [-Wimplicit-function-declaration]
+     radioactivity[0] = pow (exp(1), -time[0] / beta);
+                        ^~~
+experiment.c:13:24: warning: incompatible implicit declaration of built-in function 'pow'
+experiment.c:13:24: note: include '<math.h>' or provide a declaration of 'pow'
+experiment.c:13:29: warning: implicit declaration of function 'exp' [-Wimplicit-function-declaration]
+     radioactivity[0] = pow (exp(1), -time[0] / beta);
+                             ^~~
+experiment.c:13:29: warning: incompatible implicit declaration of built-in function 'exp'
+experiment.c:13:29: note: include '<math.h>' or provide a declaration of 'exp'
+add_noise.c: In function 'add_noise':
+add_noise.c:5:5: warning: implicit declaration of function 'srand' [-Wimplicit-function-declaration]
+     srand (time (NULL));
+     ^~~~~
+add_noise.c:5:12: warning: implicit declaration of function 'time' [-Wimplicit-function-declaration]
+     srand (time (NULL));
+            ^~~~
+add_noise.c:5:18: error: 'NULL' undeclared (first use in this function)
+     srand (time (NULL));
+                  ^~~~
+add_noise.c:5:18: note: each undeclared identifier is reported only once for each function it appears in
+add_noise.c:6:28: warning: implicit declaration of function 'rand' [-Wimplicit-function-declaration]
+     random_value = (double)rand()/RAND_MAX*2.0-1.0;
+                            ^~~~
+add_noise.c:6:35: error: 'RAND_MAX' undeclared (first use in this function)
+     random_value = (double)rand()/RAND_MAX*2.0-1.0;
+                                   ^~~~~~~~
+add_noise.c:10:47: error: called object 'random_value' is not a function or function pointer
+         radioactivity[i] = radioactivity[i] + random_value () * 0.05;
+                                               ^~~~~~~~~~~~
+add_noise.c:3:12: note: declared here
+     double random_value;
+            ^~~~~~~~~~~~
+precision_analysis.c: In function 'precision_analysis':
+precision_analysis.c:5:29: warning: implicit declaration of function 'nonlinear_equation' [-Wimplicit-function-declaration]
+         double decay_time = nonlinear_equation(radioactivity, time, M, precision);
+                             ^~~~~~~~~~~~~~~~~~
+precision_analysis.c:6:16: warning: implicit declaration of function 'fabs' [-Wimplicit-function-declaration]
+         while (fabs(decay_time / precision) < 10){
+                ^~~~
+precision_analysis.c:6:16: warning: incompatible implicit declaration of built-in function 'fabs'
+precision_analysis.c:6:16: note: include '<math.h>' or provide a declaration of 'fabs'
+precision_analysis.c:10:29: warning: implicit declaration of function 'linear_equation' [-Wimplicit-function-declaration]
+         double decay_rate = linear_equation(radioactivity, time, M);
+                             ^~~~~~~~~~~~~~~
+precision_analysis.c:11:29: warning: implicit declaration of function 'dev_exp' [-Wimplicit-function-declaration]
+         double deviation1 = dev_exp(radioactivity, time, M, decay_time);
+                             ^~~~~~~
+precision_analysis.c:12:29: warning: implicit declaration of function 'dev_linear' [-Wimplicit-function-declaration]
+         double deviation2 = dev_linear(radioactivity, time, M, decay_rate);
+                             ^~~~~~~~~~
+Для продолжения нажмите любую клавишу . . .
