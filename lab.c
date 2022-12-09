@@ -3,9 +3,18 @@
 extern double FROM;
 extern double TO;
 
-int main()
+int main(int argc, char **argv)
 {
-    FILE *file = fopen("data.txt", "r");
+    char *fname = strdup("data1.txt");
+    if(argc > 1)
+        fname[4] = argv[1][0];
+    FILE *file = fopen(fname, "r");
+    if(!file)
+    {
+        printf("No file:%s!", fname);
+        return -1;
+    }
+
     double start_time = 0;
     double end_time = 0;
     double step = 0;
@@ -17,7 +26,7 @@ int main()
 
     double *radioactivity = (double *)calloc((int)(2 * (end_time - start_time) / step), sizeof(double));
     double *time = (double *)calloc((int)(2 * (end_time - start_time) / step), sizeof(double));
-    int N = experiment(radioactivity, time, start_time, end_time, step);
+    int N = experiment(radioactivity, time, start_time, end_time, step, const_betta);
     add_noise(radioactivity, N);
     FROM = int1;
     TO = int2;

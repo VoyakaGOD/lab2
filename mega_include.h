@@ -5,8 +5,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
 
-int experiment(double *radioactivity, double *time, double start_time, double end_time, double step);
+int experiment(double *radioactivity, double *time, double start_time, double end_time, double step, double beta);
 
 void add_noise(double *radioactivity, int N);
 
