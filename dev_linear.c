@@ -1,8 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <math.h>
 
-
-double dev_exp(double *radioctivity, double *time, int M, double decay_rate)
+double dev_linear(double *radioctivity, double *time, int M, double decay_rate)
 {
     double sigma = 0;
     double true_time = 0;
