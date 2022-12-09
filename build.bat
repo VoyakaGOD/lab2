@@ -1,0 +1,1 @@
+gcc lab.c experiment.c add_noise.c nonlinear_equation.c model.c linear_equation.c precision_analysis.c dev_exp.c dev_linear.c -o lab.exe || pause
