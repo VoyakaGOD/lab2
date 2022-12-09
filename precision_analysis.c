@@ -1,3 +1,5 @@
+#include "mega_include.h"
+
 double precision_analysis (double *radioactivity, double *time, int N){
     int M = 10;
     while (M != N){

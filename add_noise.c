@@ -1,3 +1,5 @@
+#include "mega_include.h"
+
 void add_noise (double *radioactivity, int N)
 {
     double random_value;

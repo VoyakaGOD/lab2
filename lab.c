@@ -1,5 +1,8 @@
 #include "mega_include.h"
 
+extern double FROM;
+extern double TO;
+
 int main()
 {
     FILE *file = fopen("data.txt", "r");
@@ -12,11 +15,13 @@ int main()
     double int2 = 0;
     fscanf(file, "%lf%lf%lf%lf%lf%lf%lf", &start_time, &end_time, &step, &precision, &const_betta, &int1, &int2);
 
-    double *radioactivity = (double *)calloc((int)(2 * (end_time - start_time) / step));
-    double *time = (double *)calloc((int)(2 * (end_time - start_time) / step));
+    double *radioactivity = (double *)calloc((int)(2 * (end_time - start_time) / step), sizeof(double));
+    double *time = (double *)calloc((int)(2 * (end_time - start_time) / step), sizeof(double));
     int N = experiment(radioactivity, time, start_time, end_time, step);
     add_noise(radioactivity, N);
-    double decay_time = nonlinear_equation(radioactivity, time, N, precision, int1, int2);
+    FROM = int1;
+    TO = int2;
+    double decay_time = nonlinear_equation(radioactivity, time, N, precision);
     double decate_rate = linear_equation(radioactivity, time, N);
     double time_differences = precision_analysis(radioactivity, time, N);
 
